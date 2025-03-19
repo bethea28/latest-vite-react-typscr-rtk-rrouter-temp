@@ -1,0 +1,20 @@
+.accident-display {
+    position: relative; /* for absolute positioning of children */
+  }
+  
+  .accident-display__title {
+    color: black;
+    position: absolute;
+    left: 130px;
+    top: 90px;
+    margin: 0; 
+  }
+  
+  .accident-display__total {
+    color: black;
+    position: absolute;
+    left: 130px;
+    bottom: -10px;
+    top: 150px;
+    margin: 0;
+  }

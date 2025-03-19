@@ -1,0 +1,7 @@
+.dc-neighborhoods-map {
+    position: relative;
+  }
+  
+  .dc-neighborhoods-map__svg {
+    background-color: lightblue;
+  }
