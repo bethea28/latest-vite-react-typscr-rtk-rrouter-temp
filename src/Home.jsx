@@ -1,14 +1,13 @@
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
+import { Routes, Route, Link } from "react-router";
 import {
   useGetProductsQuery,
   useAddProductsMutation,
 } from "./features/initialState/initialStateService";
-import {
-  increment,
-  incrementByAmount,
-} from "./features/initialState/InitialStateSlice";
-const App = () => {
+import { incrementByAmount } from "./features/initialState/InitialStateSlice";
+
+const Home = () => {
   const state = useSelector((state) => state.initialState.value);
   const { data } = useGetProductsQuery();
   const [addProduct] = useAddProductsMutation();
@@ -22,9 +21,26 @@ const App = () => {
   };
   return (
     <section onClick={handleClick}>
-      <p>Hello World</p>
+      <Link to="/profile">
+        <p>Hello World to Profile</p>
+      </Link>
     </section>
   );
 };
 
-export default App;
+const Profile = () => (
+  <Link to="/">
+    <p>Link back home</p>;
+  </Link>
+);
+
+export const Routing = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </>
+  );
+};
