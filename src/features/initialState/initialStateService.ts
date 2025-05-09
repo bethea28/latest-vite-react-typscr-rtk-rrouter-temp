@@ -6,9 +6,26 @@ export const initialStateService = createApi({
   reducerPath: "initialStateService",
   baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com/" }),
   endpoints: (build) => ({
-    // getPokemonByName: builder.query<Pokemon, string>({
-    //   query: (name) => `pokemon/${name}`,
-    // }),
+    getPokemonByName: build.query<any, any>({
+      queryFn: async (data) => {
+        try {
+          const response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${data.name}`
+          );
+
+          // if (!response.ok) {
+          //   return {
+          //     error: { status: response.status, message: response.statusText },
+          //   };
+          // }
+
+          const result = await response.json();
+          return { data: result };
+        } catch (err) {
+          return { error: { status: "FETCH_ERROR", message: err.message } };
+        }
+      },
+    }),
     getProducts: build.query<any, { skip: number }>({
       query: (data) => {
         console.log("data get all", data);
@@ -41,5 +58,8 @@ export const initialStateService = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetProductsQuery, useAddProductsMutation } =
-  initialStateService;
+export const {
+  useGetProductsQuery,
+  useAddProductsMutation,
+  useGetPokemonByNameQuery,
+} = initialStateService;

@@ -5,6 +5,7 @@ import { Routes, Route, Link } from "react-router";
 import {
   useGetProductsQuery,
   useAddProductsMutation,
+  useGetPokemonByNameQuery,
 } from "./features/initialState/initialStateService";
 import { incrementByAmount } from "./features/initialState/InitialStateSlice";
 
@@ -16,8 +17,9 @@ const Home = () => {
   );
   const [skip, setSkip] = React.useState(0);
   const { data: allProducts } = useGetProductsQuery({ skip });
+  const { data: pokeMan } = useGetPokemonByNameQuery({ name: "ditto" });
   const [addProduct] = useAddProductsMutation();
-  console.log("types now");
+  console.log("pokeMan man results", pokeMan);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
