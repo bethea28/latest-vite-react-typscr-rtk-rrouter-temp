@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface State {
+  value: number;
+}
+const initialState: State = {
   value: 0,
 };
 // redux toolkit framework for handling global state

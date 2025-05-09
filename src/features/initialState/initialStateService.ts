@@ -9,10 +9,11 @@ export const initialStateService = createApi({
     // getPokemonByName: builder.query<Pokemon, string>({
     //   query: (name) => `pokemon/${name}`,
     // }),
-    getProducts: build.query({
+    getProducts: build.query<any, { skip: number }>({
       query: (data) => {
+        console.log("data get all", data);
         return {
-          url: `products`,
+          url: `products?limit=10&&skip=${data.skip}`,
           method: "GET",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
