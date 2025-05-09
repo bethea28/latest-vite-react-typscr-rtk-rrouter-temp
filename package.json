@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "react-scripts test --env=jsdom",
-    "type-check": "tsc --noEmit --watch"
+    "types": "tsc --noEmit --watch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
